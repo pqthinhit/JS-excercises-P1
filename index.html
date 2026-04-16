@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript excercises part 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="w-2xl mx-auto my-4">
+        <h2 class="text-center font-bold">Mô hình 3 khối (5 trang)</h2>
+        <div class="m-3 p-4 rounded-lg bg-white border border-gray-100 shadow-sm">
+            <iframe frameborder="0" style="width:100%;height:300px;"
+                src="https://viewer.diagrams.net/?tags=%7B%7D&lightbox=1&highlight=0000ff&edit=_blank&layers=1&nav=1&dark=auto#Uhttps%3A%2F%2Fdrive.google.com%2Fuc%3Fid%3D1JSokHy7lC7WP5dqE7TUcSGRHDN9yKm3y%26export%3Ddownload"></iframe>
+        </div>
+        <div class="border-b border-gray-200 mb-4">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#tabContents"
+                role="tablist">
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="salary-tab" data-tabs-target="#salary"
+                        type="button" role="tab" aria-selected="false">Tính lương</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="avg-tab" data-tabs-target="#avg"
+                        type="button" role="tab" aria-selected="false">Tính trung bình</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="avg-tab" data-tabs-target="#currency"
+                        type="button" role="tab" aria-selected="false">Quy đổi tiền</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="avg-tab" data-tabs-target="#rectangle"
+                        type="button" role="tab" aria-selected="false">Hình chữ nhật</button>
+                </li>
+                <li class="me-2" role="presentation">
+                    <button class="inline-block p-4 border-b-2 rounded-t-lg" id="avg-tab" data-tabs-target="#digit-sum"
+                        type="button" role="tab" aria-selected="false">Tổng 2 ký số</button>
+                </li>
+            </ul>
+        </div>
+
+        <div id="tabContents">
+            <div class="hidden p-4 rounded-lg bg-white border border-gray-100 shadow-sm" id="salary" role="tabpanel"
+                aria-labelledby="salary-tab">
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full">
+                        <input type="text" id="date" placeholder="Nhập số ngày công"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <button onclick="salaryCal()"
+                        class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-lg shadow-md transition-all">
+                        Submit
+                    </button>
+                </div>
+            </div>
+            <div class="hidden p-4 rounded-lg bg-white border border-gray-100 shadow-sm" id="avg" role="tabpanel"
+                aria-labelledby="avg-tab">
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full flex flex-col gap-2">
+                        <input type="text" id="num1" placeholder="Nhập số đầu tiên"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        <input type="text" id="num2" placeholder="Nhập số thứ 2"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        <input type="text" id="num3" placeholder="Nhập số thứ 3"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        <input type="text" id="num4" placeholder="Nhập số thứ 4"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        <input type="text" id="num5" placeholder="Nhập số thứ 5"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <div class="flex flex-col gap-y-3">
+                        <button onclick="calcAverage()"
+                            class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-lg shadow-md transition-all">
+                            Submit
+                        </button>
+                        <button onclick="resetinputcalcAverage()"
+                            class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-red-600 hover:bg-red-700 active:scale-95 rounded-lg shadow-md transition-all">
+                            Reset
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="hidden p-4 rounded-lg bg-white border border-gray-100 shadow-sm" id="currency" role="tabpanel"
+                aria-labelledby="currency-tab">
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full">
+                        <input type="number" id="usdAmount" placeholder="Nhập số tiền USD"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <button onclick="convertCurrency()"
+                        class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-lg shadow-md transition-all">
+                        Submit
+                    </button>
+                    <button onclick="resetInputConvertCurrency()"
+                        class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-red-600 hover:bg-red-700 active:scale-95 rounded-lg shadow-md transition-all">
+                        Reset
+                    </button>
+                </div>
+                <!-- Sử dụng innerHTML -->
+                <div id="currencyResult"
+                    class="mt-4 p-3 hidden bg-green-50 text-green-700 rounded-lg font-medium border border-green-100">
+                </div>
+            </div>
+            <div class="hidden p-4 rounded-lg bg-white border border-gray-100 shadow-sm" id="rectangle" role="tabpanel"
+                aria-labelledby="rectangle-tab">
+                <div class="flex flex-col gap-3">
+                    <div class="flex flex-col sm:flex-row items-center gap-3">
+                        <div class="relative w-full">
+                            <input type="number" id="length" placeholder="Nhập chiều dài"
+                                class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <div class="relative w-full">
+                            <input type="number" id="width" placeholder="Nhập chiều rộng"
+                                class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                        </div>
+                        <button onclick="calcRectangle()"
+                            class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-lg shadow-md transition-all">
+                            Submit
+                        </button>
+                        <button onclick="resetRectangle()"
+                            class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-red-600 hover:bg-red-700 active:scale-95 rounded-lg shadow-md transition-all">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div id="rectResult"
+                        class="hidden p-3 bg-blue-50 text-blue-800 rounded-lg font-medium border border-blue-100 space-y-1">
+                        <p id="areaResult"></p>
+                        <p id="perimeterResult"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="hidden p-4 rounded-lg bg-white border border-gray-100 shadow-sm" id="digit-sum" role="tabpanel"
+                aria-labelledby="digit-sum-tab">
+                <div class="flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full">
+                        <input type="number" id="twoDigitNumber" placeholder="Nhập số có 2 chữ số (VD: 12, 44)"
+                            class="block w-full px-4 py-2 text-gray-700 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none transition-all">
+                    </div>
+                    <button onclick="calcDigitSum()"
+                        class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-blue-600 hover:bg-blue-700 active:scale-95 rounded-lg shadow-md transition-all">
+                        Submit
+                    </button>
+                    <button onclick="resetDigitSum()"
+                        class="w-full sm:w-auto px-6 py-2 text-white font-medium bg-red-600 hover:bg-red-700 active:scale-95 rounded-lg shadow-md transition-all">
+                        Reset
+                    </button>
+                </div>
+
+                <div id="digitSumResult"
+                    class="mt-4 p-3 hidden bg-purple-50 text-purple-700 rounded-lg font-medium border border-purple-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="./main.js"></script>
+</body>
+
+</html>
