@@ -169,16 +169,15 @@ function calcDigitSum() {
     const resultDiv = document.getElementById('digitSumResult');
 
     // 2. Kiểm tra xem có đúng là số có 2 chữ số không (từ 10 đến 99 hoặc -99 đến -10)
-    if (isNaN(number) || Math.abs(number) < 10 || Math.abs(number) > 99) {
+    if (isNaN(number) || number < 10 || number > 99) {
         Swal.fire({
             title: "Dữ liệu không hợp lệ!",
-            text: `Vui lòng nhập số có 2 chữ số VD: 12, 44`,
+            text: `Vui lòng nhập số dương có 2 chữ số VD: 12, 44`,
             icon: "error"
         });
         return;
     }
 
-    // Làm việc với số dương để tách ký số chính xác
     const positiveNumber = Math.abs(number);
 
     // 3. Tách số hàng chục và hàng đơn vị
